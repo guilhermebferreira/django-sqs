@@ -4,12 +4,12 @@ from unittest import TestCase
 
 from mock import Mock
 
-from eb_sqs import settings
-from eb_sqs.decorators import task
-from eb_sqs.worker.queue_client import QueueClient
-from eb_sqs.worker.worker import Worker
-from eb_sqs.worker.worker_exceptions import MaxRetriesReachedException
-from eb_sqs.worker.worker_factory import WorkerFactory
+from sqs_consumer import settings
+from sqs_consumer.decorators import task
+from sqs_consumer.worker.queue_client import QueueClient
+from sqs_consumer.worker.worker import Worker
+from sqs_consumer.worker.worker_exceptions import MaxRetriesReachedException
+from sqs_consumer.worker.worker_factory import WorkerFactory
 
 
 class TestException(Exception):
@@ -71,7 +71,7 @@ class WorkerTest(TestCase):
         settings.WORKER_FACTORY = factory_mock
 
     def test_worker_execution(self):
-        msg = '{"id": "id-1", "retry": 0, "queue": "default", "maxRetries": 5, "args": [], "func": "eb_sqs.tests.worker.tests_worker.dummy_task", "kwargs": {"msg": "Hello World!"}}'
+        msg = '{"id": "id-1", "retry": 0, "queue": "default", "maxRetries": 5, "args": [], "func": "sqs_consumer.tests.worker.tests_worker.dummy_task", "kwargs": {"msg": "Hello World!"}}'
 
         result = self.worker.execute(msg)
 
@@ -80,7 +80,7 @@ class WorkerTest(TestCase):
     def test_worker_execution_dead_letter_queue(self):
         settings.DEAD_LETTER_MODE = True
 
-        msg = '{"id": "id-1", "groupId": "group-5", "retry": 0, "queue": "default", "maxRetries": 5, "args": [], "func": "eb_sqs.tests.worker.tests_worker.dummy_task", "kwargs": {"msg": "Hello World!"}}'
+        msg = '{"id": "id-1", "groupId": "group-5", "retry": 0, "queue": "default", "maxRetries": 5, "args": [], "func": "sqs_consumer.tests.worker.tests_worker.dummy_task", "kwargs": {"msg": "Hello World!"}}'
 
         result = self.worker.execute(msg)
 

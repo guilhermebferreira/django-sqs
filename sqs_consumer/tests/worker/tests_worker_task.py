@@ -3,7 +3,7 @@ from __future__ import absolute_import, unicode_literals
 import json
 from unittest import TestCase
 
-from eb_sqs.worker.worker_task import WorkerTask
+from sqs_consumer.worker.worker_task import WorkerTask
 
 
 class TestObject(object):
@@ -19,7 +19,7 @@ def dummy_function():
 
 class WorkerTaskTest(TestCase):
     def setUp(self):
-        self.dummy_msg = '{"queue": "default", "retryId": "retry-uuid", "retry": 0, "func": "eb_sqs.tests.worker.tests_worker_task.dummy_function", "kwargs": {}, "maxRetries": 5, "args": [], "pickle": false, "id": "id-1", "groupId": "group-5"}'
+        self.dummy_msg = '{"queue": "default", "retryId": "retry-uuid", "retry": 0, "func": "sqs_consumer.tests.worker.tests_worker_task.dummy_function", "kwargs": {}, "maxRetries": 5, "args": [], "pickle": false, "id": "id-1", "groupId": "group-5"}'
 
     def test_serialize_worker_task(self):
         worker_task = WorkerTask('id-1', 'group-5', 'default', dummy_function, [], {}, 5, 0, 'retry-uuid', False)

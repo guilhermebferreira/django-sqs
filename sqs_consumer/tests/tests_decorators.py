@@ -4,10 +4,10 @@ from unittest import TestCase
 
 from mock import Mock
 
-from eb_sqs import settings
-from eb_sqs.decorators import task
-from eb_sqs.worker.worker import Worker
-from eb_sqs.worker.worker_factory import WorkerFactory
+from sqs_consumer import settings
+from sqs_consumer.decorators import task
+from sqs_consumer.worker.worker import Worker
+from sqs_consumer.worker.worker_factory import WorkerFactory
 
 
 @task()

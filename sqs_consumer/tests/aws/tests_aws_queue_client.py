@@ -8,9 +8,9 @@ import boto3
 from botocore.exceptions import ClientError
 from moto import mock_sqs
 
-from eb_sqs import settings
-from eb_sqs.aws.sqs_queue_client import SqsQueueClient
-from eb_sqs.worker.queue_client import QueueDoesNotExistException
+from sqs_consumer import settings
+from sqs_consumer.aws.sqs_queue_client import SqsQueueClient
+from sqs_consumer.worker.queue_client import QueueDoesNotExistException
 
 
 class AwsQueueClientTest(TestCase):

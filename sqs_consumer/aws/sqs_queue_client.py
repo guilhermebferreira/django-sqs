@@ -4,8 +4,8 @@ import boto3
 from botocore.config import Config
 from botocore.exceptions import ClientError
 
-from eb_sqs import settings
-from eb_sqs.worker.queue_client import QueueClient, QueueDoesNotExistException, QueueClientException
+from sqs_consumer import settings
+from sqs_consumer.worker.queue_client import QueueClient, QueueDoesNotExistException, QueueClientException
 
 
 class SqsQueueClient(QueueClient):

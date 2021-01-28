@@ -6,9 +6,9 @@ VERSION = open(os.path.join(here, 'VERSION')).read()
 README = open(os.path.join(here, 'README.md')).read()
 
 setup(
-    name='django-eb-sqs',
+    name='sqs_consumer',
     version=VERSION,
-    package_dir={'eb_sqs': 'eb_sqs'},
+    package_dir={'sqs_consumer': 'sqs_consumer'},
     include_package_data=True,
     packages=find_packages(),
     description='A simple task manager for AWS SQS',
