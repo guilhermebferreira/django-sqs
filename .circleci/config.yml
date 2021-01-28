@@ -19,7 +19,7 @@ jobs:
       - run:
           name: Run tests
           command: |
-            python -m django test --settings=sqs_consumer.test_settings
+            python -m django test --settings=eb_sqs.test_settings
   test-python-2-7:
     <<: *test-template
     docker:
