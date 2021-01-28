@@ -2,8 +2,8 @@ from __future__ import absolute_import, unicode_literals
 
 from abc import ABCMeta, abstractmethod
 
-from sqs_consumer import settings
-from sqs_consumer.worker.worker import Worker
+from eb_sqs import settings
+from eb_sqs.worker.worker import Worker
 
 
 class WorkerFactory(object):
@@ -22,7 +22,7 @@ class WorkerFactory(object):
     def default():
         # type: () -> WorkerFactory
         if not settings.WORKER_FACTORY:
-            from sqs_consumer.worker.sqs_worker_factory import SqsWorkerFactory
+            from eb_sqs.worker.sqs_worker_factory import SqsWorkerFactory
             return SqsWorkerFactory()
         else:
             return settings.WORKER_FACTORY

@@ -3,13 +3,13 @@ from __future__ import absolute_import, unicode_literals
 import logging
 import uuid
 
-from sqs_consumer import settings
-from sqs_consumer.worker.queue_client import QueueDoesNotExistException, QueueClient, QueueClientException
-from sqs_consumer.worker.worker_exceptions import InvalidMessageFormatException, ExecutionFailedException, \
+from eb_sqs import settings
+from eb_sqs.worker.queue_client import QueueDoesNotExistException, QueueClient, QueueClientException
+from eb_sqs.worker.worker_exceptions import InvalidMessageFormatException, ExecutionFailedException, \
     MaxRetriesReachedException, InvalidQueueException, QueueException
-from sqs_consumer.worker.worker_task import WorkerTask
+from eb_sqs.worker.worker_task import WorkerTask
 
-logger = logging.getLogger("sqs_consumer")
+logger = logging.getLogger("eb_sqs")
 
 
 class Worker(object):

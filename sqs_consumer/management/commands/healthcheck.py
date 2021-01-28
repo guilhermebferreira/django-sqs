@@ -7,7 +7,7 @@ from django.core.management import BaseCommand
 from django.utils import timezone
 from django.utils.dateparse import parse_datetime
 
-from sqs_consumer import settings
+from eb_sqs import settings
 
 logger = logging.getLogger(__name__)
 

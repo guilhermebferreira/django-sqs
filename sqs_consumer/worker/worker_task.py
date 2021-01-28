@@ -5,7 +5,7 @@ import importlib
 import json
 import uuid
 
-from sqs_consumer import settings
+from eb_sqs import settings
 
 try:
     import cPickle as pickle
@@ -32,7 +32,7 @@ class WorkerTask(object):
 
     def execute(self):
         # type: () -> Any
-        from sqs_consumer.decorators import func_retry_decorator
+        from eb_sqs.decorators import func_retry_decorator
         self.func.retry_num = self.retry
         self.func.retry = func_retry_decorator(worker_task=self)
         return self.func(*self.args, **self.kwargs)
@@ -88,7 +88,7 @@ class WorkerTask(object):
         id = task.get('id', str(uuid.uuid4()))
         group_id = task.get('groupId')
 
-        abs_func_name = task['func']
+        abs_func_name = task.get('func', self.abs_func_name)
         func_name = abs_func_name.split(".")[-1]
         func_path = ".".join(abs_func_name.split(".")[:-1])
         func_module = importlib.import_module(func_path)
