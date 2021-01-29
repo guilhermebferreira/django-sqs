@@ -88,7 +88,7 @@ class WorkerTask(object):
         id = task.get('id', str(uuid.uuid4()))
         group_id = task.get('groupId')
 
-        abs_func_name = task.get('func', self.abs_func_name)
+        abs_func_name = task['func']
         func_name = abs_func_name.split(".")[-1]
         func_path = ".".join(abs_func_name.split(".")[:-1])
         func_module = importlib.import_module(func_path)
