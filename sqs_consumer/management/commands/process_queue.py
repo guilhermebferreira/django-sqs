@@ -2,7 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 from django.core.management import BaseCommand, CommandError
 
-from eb_sqs.worker.service import WorkerService
+from sqs_consumer.worker.service import WorkerService
 
 
 class Command(BaseCommand):

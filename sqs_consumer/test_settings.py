@@ -1,7 +1,7 @@
 SECRET_KEY = "secret-test-key"
 
 INSTALLED_APPS = (
-    'eb_sqs',
+    'sqs_consumer',
 )
 
 DATABASES = {
@@ -34,7 +34,7 @@ TEMPLATES = [
     },
 ]
 
-ROOT_URLCONF = 'eb_sqs.urls'
+ROOT_URLCONF = 'sqs_consumer.urls'
 
 LOGGING = {
     'version': 1,
@@ -46,7 +46,7 @@ LOGGING = {
         },
     },
     'loggers': {
-        'eb_sqs': {
+        'sqs_consumer': {
             'handlers': ['console'],
             'level': 'CRITICAL'
         },

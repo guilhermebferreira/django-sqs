@@ -16,7 +16,7 @@ Don't forget to add django-eb-sqs app to your Django `INSTALLED_APPS` settings:
 ```python
 INSTALLED_APPS = (
     ...,
-    'eb_sqs',
+    'sqs_consumer',
 )
 ```
 
@@ -27,7 +27,7 @@ INSTALLED_APPS = (
 Adding a task to a queue is simple.
 
 ```python
-from eb_sqs.decorators import task
+from sqs_consumer.decorators import task
 
 @task(queue_name='test')
 def echo(message):
@@ -58,7 +58,7 @@ echo.delay(message='Hello World!', execute_inline=True)
 Failed tasks can be retried by using the `retry` method. See the following example:
 
 ```python
-from eb_sqs.decorators import task
+from sqs_consumer.decorators import task
 
 @task(queue_name='test', max_retries=5)
 def upload_file(message):
@@ -99,7 +99,7 @@ This makes the code much simpler, and allows using classes to invoke your method
 
 This is how you would define your class:
 ```python
-from eb_sqs.auto_tasks.service import AutoTaskService
+from sqs_consumer.auto_tasks.service import AutoTaskService
 
 class MyService:
     def __init__(self, p1=default1, ..., pN=defaultN, auto_task_service=None):
@@ -153,5 +153,5 @@ Make sure to install the development dependencies from `development.txt`.
 The build in tests can be executed with the Django test runner.
 
 ```bash
-python -m django test --settings=eb_sqs.test_settings
+python -m django test --settings=sqs_consumer.test_settings
 ```

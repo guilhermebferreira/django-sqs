@@ -1,8 +1,8 @@
 from __future__ import absolute_import, unicode_literals
 
-from eb_sqs import settings
-from eb_sqs.worker.worker_factory import WorkerFactory
-from eb_sqs.worker.worker_task import WorkerTask
+from sqs_consumer import settings
+from sqs_consumer.worker.worker_factory import WorkerFactory
+from sqs_consumer.worker.worker_task import WorkerTask
 
 
 def _get_kwarg_val(kwargs, key, default):

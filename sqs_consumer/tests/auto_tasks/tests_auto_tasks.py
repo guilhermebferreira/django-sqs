@@ -2,9 +2,9 @@ from unittest import TestCase
 
 from mock import Mock, call
 
-from eb_sqs import settings
-from eb_sqs.auto_tasks.exceptions import RetryableTaskException
-from eb_sqs.auto_tasks.service import AutoTaskService, _auto_task_wrapper
+from sqs_consumer import settings
+from sqs_consumer.auto_tasks.exceptions import RetryableTaskException
+from sqs_consumer.auto_tasks.service import AutoTaskService, _auto_task_wrapper
 
 
 class TestService:

@@ -11,11 +11,11 @@ from botocore.exceptions import ClientError
 import django.dispatch
 from django.utils import timezone
 
-from eb_sqs import settings
-from eb_sqs.worker.commons import django_db_management
-from eb_sqs.worker.worker import Worker
-from eb_sqs.worker.worker_exceptions import ExecutionFailedException
-from eb_sqs.worker.worker_factory import WorkerFactory
+from sqs_consumer import settings
+from sqs_consumer.worker.commons import django_db_management
+from sqs_consumer.worker.worker import Worker
+from sqs_consumer.worker.worker_exceptions import ExecutionFailedException
+from sqs_consumer.worker.worker_factory import WorkerFactory
 
 logger = logging.getLogger(__name__)
 

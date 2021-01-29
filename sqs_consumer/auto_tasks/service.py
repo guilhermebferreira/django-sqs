@@ -1,9 +1,9 @@
 import importlib
 import logging
 
-from eb_sqs.auto_tasks.exceptions import RetryableTaskException
-from eb_sqs.decorators import task
-from eb_sqs.worker.worker_exceptions import MaxRetriesReachedException
+from sqs_consumer.auto_tasks.exceptions import RetryableTaskException
+from sqs_consumer.decorators import task
+from sqs_consumer.worker.worker_exceptions import MaxRetriesReachedException
 
 logger = logging.getLogger(__name__)
 
