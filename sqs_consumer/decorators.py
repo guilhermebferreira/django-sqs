@@ -3,6 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from sqs_consumer import settings
 from sqs_consumer.worker.worker_factory import WorkerFactory
 from sqs_consumer.worker.worker_task import WorkerTask
+from boltons.funcutils import wraps
 
 
 def _get_kwarg_val(kwargs, key, default):
@@ -41,16 +42,22 @@ def func_retry_decorator(worker_task):
     return wrapper
 
 
-class task(object):
-    def __init__(self, queue_name=None, max_retries=None, use_pickle=None):
-        # type: (str, int, bool) -> None
-        self.queue_name = queue_name
-        self.max_retries = max_retries
-        self.use_pickle = use_pickle
+# class task(object):
+#     def __init__(self, queue_name=None, max_retries=None, use_pickle=None):
+#         # type: (str, int, bool) -> None
+#         self.queue_name = queue_name
+#         self.max_retries = max_retries
+#         self.use_pickle = use_pickle
 
-    def __call__(self, *args, **kwargs):
-        # type: (tuple, dict) -> Any
-        func = args[0]
-        func.retry_num = 0
-        func.delay = func_delay_decorator(func, self.queue_name, self.max_retries, self.use_pickle)
-        return func
+#     def __call__(self, *args, **kwargs):
+#         # type: (tuple, dict) -> Any
+#         func = args[0]
+#         func.retry_num = 0
+#         func.delay = func_delay_decorator(func, self.queue_name, self.max_retries, self.use_pickle)
+#         return func
+
+
+def task(some_function):
+    def wrapper(queue_name=None, max_retries=None, use_pickle=None):
+        func.delay = func_delay_decorator(some_function, self.queue_name, self.max_retries, self.use_pickle)
+    return wrapper
