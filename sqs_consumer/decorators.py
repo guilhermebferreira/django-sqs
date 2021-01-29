@@ -3,7 +3,6 @@ from __future__ import absolute_import, unicode_literals
 from sqs_consumer import settings
 from sqs_consumer.worker.worker_factory import WorkerFactory
 from sqs_consumer.worker.worker_task import WorkerTask
-from boltons.funcutils import wraps
 
 
 def _get_kwarg_val(kwargs, key, default):
@@ -11,7 +10,7 @@ def _get_kwarg_val(kwargs, key, default):
     return kwargs.pop(key, default) if kwargs else default
 
 
-def func_delay_decorator(func, queue_name, max_retries_count, use_pickle):
+def task(func, queue_name, max_retries_count, use_pickle):
     # type: (Any, str, int, bool) -> (tuple, dict)
     def wrapper(*args, **kwargs):
         # type: (tuple, dict) -> Any
@@ -57,7 +56,7 @@ def func_retry_decorator(worker_task):
 #         return func
 
 
-def task(some_function):
-    def wrapper(queue_name=None, max_retries=None, use_pickle=None):
-        func.delay = func_delay_decorator(some_function, self.queue_name, self.max_retries, self.use_pickle)
-    return wrapper
+# def task(some_function):
+#     def wrapper(queue_name=None, max_retries=None, use_pickle=None):
+#         func.delay = func_delay_decorator(some_function, self.queue_name, self.max_retries, self.use_pickle)
+#     return wrapper
